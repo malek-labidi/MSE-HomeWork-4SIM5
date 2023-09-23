@@ -11,7 +11,7 @@ List your homework assignments here with brief descriptions and links to relevan
            Endpoint: /game
            Description: Fetches the list of all games from the JSON file and responds with the data as a JSON object. The response is returned with a status code of 200.
           
-       2.Retrieve Games by Year
+       2. Retrieve Games by Year
           Endpoint: /game/select/:year
           Description: Retrieves a list of games with a release year greater than the specified year parameter. The filtered games are returned as a JSON object with a status code of 200.
      
