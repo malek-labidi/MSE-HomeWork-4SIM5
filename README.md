@@ -18,4 +18,3 @@ List your homework assignments here with brief descriptions and links to relevan
        4. Retrieve Steam URL of a Game
           - Endpoint: /game/:name
           - Description: Allows users to obtain the Steam URL of a game by providing its name as a parameter in the URI. The URL is returned as a JSON response with a status code of 200.
-      The application operates on a data entity named "Game," which includes attributes such as name, year, and the Steam URL.
