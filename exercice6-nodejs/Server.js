@@ -37,13 +37,12 @@ const server = createServer((req, res) => {
          * Récupérer la liste de tous les jeux
          *
          *  */
-
         if (paths[0] === 'game' && paths.length === 1) {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(jsonData));
             return;
         }
-        
+
         /**
          * Récupérer la liste des jeux avec une date supérieure à celle passée en paramètre
          * 
@@ -53,6 +52,19 @@ const server = createServer((req, res) => {
             var data_filter = jsonData.filter(e => e.Year > paths[2]);
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(data_filter));
+            return;
+        }
+
+        /**
+         * Récupérer l’URL du jeu sur Steam en passant en paramètre son nom
+         */
+        if (paths[0] === 'game' && paths[1] !== '') {
+            console.log(paths[1] , decodeURI(paths[1]));
+            const gameName = paths[1];
+            
+            var data_filter = jsonData.filter(e => e.Game === decodeURI(gameName));
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(data_filter[0].GameLink));
             return;
         }
 
