@@ -39,6 +39,7 @@ export function UpdateGame(req, res) {
 
 
 export function GetAllGames(req, res) {
+
     res.status(200).json({ message: "All games", entity: games });
 }
 
@@ -52,3 +53,6 @@ export function GetGame(req, res) {
 
     res.status(200).json({ message: "Game", entity: game });
 }
+
+
+export default games;

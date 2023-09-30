@@ -6,18 +6,6 @@ export default class Game {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
-        this.achats = [];
     }
 
-    addAchat(achat) {
-        this.achats.push(achat);
-    }
-
-    removeAchat(achat) {
-        const index = this.achats.indexOf(achat);
-        if (index !== -1) {
-            this.achats.splice(index, 1);
-        }
-
-    }
 }

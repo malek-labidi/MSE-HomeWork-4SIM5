@@ -5,17 +5,5 @@ export default class User {
         this.username = username;
         this.password = password;
         this.wallet = wallet;
-        this.achats = [];
-    }
-
-    addAchat(achat) {
-        this.achats.push(achat);
-    }
-
-    removeAchat(achat) {
-        const index = this.achats.indexOf(achat);
-        if (index !== -1) {
-            this.achats.splice(index, 1);
-        }
     }
 }

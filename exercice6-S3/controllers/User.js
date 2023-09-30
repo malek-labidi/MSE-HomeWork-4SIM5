@@ -71,4 +71,5 @@ export function SignUser(req, res) {
 
 }
 
+export default users;
 
