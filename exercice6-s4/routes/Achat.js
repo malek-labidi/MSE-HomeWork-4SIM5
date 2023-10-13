@@ -4,7 +4,7 @@ import{ achatGame } from '../controllers/Achat.js';
 const router = express.Router();
 
 router
-    .route('/:idUser/:idGame')
+    .route('/:userId/:gameId')
     .post(achatGame);
 
 export default router;

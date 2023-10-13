@@ -8,14 +8,14 @@ import User from "../models/user.js";
  * @param {*} res 
  * Ajouter un achat
  */
-export function achatGame(req, res) {
+export async function achatGame(req, res) {
     const userId = req.params.userId;
     const gameId = req.params.gameId;
     const dateNow = new Date();
-
+console.log(userId);
     try {
-        const user =  User.find({userId});
-        const game =  Game.findById(gameId);
+        const user = await User.findById(userId);
+        const game = await Game.findById(gameId);
 
         if (!user || !game) {
             return res.status(404).json({ message: 'User or game not found' });
@@ -27,15 +27,15 @@ export function achatGame(req, res) {
         }
 
         // Create a new Achat document using Mongoose's create method
-        const achat = Achat.create({
-            date: dateNow,
-            userId: user._id,
-            gameId: game._id
+        const achat = await Achat.create({
+            boughtDate: dateNow,
+            user: user._id,
+            game: game._id
         });
 
         // Update user's wallet and save the changes
         user.wallet -= game.price;
-         user.save();
+        await user.save();
 
         res.status(201).json(achat);
     } catch (error) {
