@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import Game from "../models/game.js";
 
 /**
@@ -8,21 +9,26 @@ import Game from "../models/game.js";
  */
 export function createGame(req, res) {
 
-    Game
-        .create(req.body)
-        .then((newGame) => {
-            res.status(201).json(
-                {
-                    title: newGame.title,
-                    description: newGame.description,
-                    quantity: newGame.quantity,
-                    price: newGame.price
-                }
-            );
-        })
-        .catch((err) => {
-            res.status(500).json({ error: err });
-        });
+    if (!validationResult(req).isEmpty()) {
+        return res.status(400).json({ errors: validationResult(req).array() });
+    } else {
+        Game
+            .create(req.body)
+            .then((newGame) => {
+                res.status(201).json(
+                    {
+                        title: newGame.title,
+                        description: newGame.description,
+                        quantity: newGame.quantity,
+                        price: newGame.price
+                    }
+                );
+            })
+            .catch((err) => {
+                res.status(500).json({ error: err });
+            });
+    }
+
 
 }
 
